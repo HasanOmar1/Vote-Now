@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 export const ChangePage = createContext();
 
-export default function ChangePageContext({ children }) {
+export default function ChangePageProvider({ children }) {
   const [currentPage, setCurrentPage] = useState("login-page");
 
   function changePage(pageName) {

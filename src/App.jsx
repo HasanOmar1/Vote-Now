@@ -3,8 +3,9 @@ import "./App.css";
 import axios from "./axiosConfig";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import SetPages from "./Pages/SetPages/SetPages";
-import ChangePageContext from "./Contexts/ChanePageContext/ChangePageContext";
+import ChangePageProvider from "./Contexts/ChanePageContext/ChangePageContext";
 import VotingPage from "./Pages/VotingPage/VotingPage";
+import VotesCounterProvider from "./Contexts/VotesCounterContext/VotesCounterContext";
 function App() {
   const [data, setData] = useState();
 
@@ -23,11 +24,13 @@ function App() {
 
   return (
     <>
-      <ChangePageContext>
-        {/* <SetPages /> */}
-        {/* <LoginPage /> */}
-        <VotingPage />
-      </ChangePageContext>
+      <ChangePageProvider>
+        <VotesCounterProvider>
+          {/* <SetPages /> */}
+          {/* <LoginPage /> */}
+          <VotingPage />
+        </VotesCounterProvider>
+      </ChangePageProvider>
     </>
   );
 }

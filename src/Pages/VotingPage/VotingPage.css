@@ -1,3 +1,20 @@
 .VotingPage{
     background-color: rgb(25, 62, 41);
 }
+
+.VotingPage .page-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    
+}
+.VotingPage #cool-span{
+    color: rgb(231, 170, 16);
+    padding: 0 10px;
+}
+
+.VotingPage .cards{
+    display: flex;
+    justify-content: space-around;
+}

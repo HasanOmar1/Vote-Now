@@ -1,0 +1,56 @@
+.Card{
+    border: 5px solid rgb(144, 0, 255);
+    width: 300px;
+    height: 500px;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: rgb(17, 124, 163);
+    margin-top: 4%;
+    position: relative;
+}
+
+
+.Card img{
+    width: 100%;
+    height: 300px;
+    border-bottom: 3px solid darkorange;
+    object-fit: cover;
+
+}
+
+.Card h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    
+}
+.Card h1{
+    position: absolute;
+    top: -47px;
+    border: 5px solid rgb(114, 136, 53);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-color: rgb(144, 0, 255);
+    width : 300px;
+    left: -5px;
+    padding: 5px 10px;
+    background-color: rgb(163, 17, 158);
+}
+
+.Card button{
+    padding: 5px 20px;
+    font-size: 1.5rem;
+    margin: 50px 100px;
+    cursor: pointer;
+    background-color: darkgoldenrod;
+    color: white;
+    border: 1px solid springgreen;
+    border-radius: 10px;
+    border: none;
+}
+
+.Card button:hover{
+    background-color: rgb(213, 157, 15);
+    transform: scale(1.1);
+}
