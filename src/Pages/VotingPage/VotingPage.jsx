@@ -2,7 +2,6 @@ import "./VotingPage.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Card from "../../components/Cards/Card";
 import cardsArr from "../../components/Cards/Cards";
-import { setVotesCounter } from "../../Contexts/VotesCounterContext/VotesCounterContext";
 
 export default function VotingPage() {
   return (

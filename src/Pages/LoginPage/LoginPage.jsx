@@ -1,8 +1,10 @@
 import { useChangePage } from "../../Contexts/ChanePageContext/ChangePageContext";
+import { useData } from "../../Contexts/DataContext/DataContext";
 import "./LoginPage.css";
 
 export default function LoginPage() {
   const { changePage } = useChangePage();
+  // const { data } = useData();
 
   function handleOnSubmit(e) {
     e.preventDefault();
