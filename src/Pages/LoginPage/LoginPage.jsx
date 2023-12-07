@@ -1,5 +1,9 @@
+import { useChangePage } from "../../Contexts/ChanePageContext/ChangePageContext";
 import "./LoginPage.css";
+
 export default function LoginPage() {
+  const { changePage } = useChangePage();
+
   function handleOnSubmit(e) {
     e.preventDefault();
   }

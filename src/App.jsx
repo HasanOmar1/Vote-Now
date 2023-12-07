@@ -26,9 +26,9 @@ function App() {
     <>
       <ChangePageProvider>
         <VotesCounterProvider>
-          {/* <SetPages /> */}
+          <SetPages />
           {/* <LoginPage /> */}
-          <VotingPage />
+          {/* <VotingPage /> */}
         </VotesCounterProvider>
       </ChangePageProvider>
     </>
