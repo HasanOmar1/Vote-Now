@@ -1,0 +1,32 @@
+.Navbar{
+    height: 70px;
+    width: 100%;
+    background-image: linear-gradient(to right top, #051937, #37425d, #687085, #9ca2ae, #d4d6da);
+    border-bottom: 5px solid rgb(2, 2, 51);
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+.Navbar .logo-container{
+        
+    font-size: 0.8rem;
+    display: flex;
+    margin-left: 120px;
+    border: 3px solid;
+    border-left-color: goldenrod;
+    border-right-color: rgb(218, 32, 137);
+    padding: 0 10px;
+    width: 10ch;
+    border-top: none;
+    border-bottom: none;
+    position: relative;
+    top: 7px;
+        
+        
+    
+}
+
+.Navbar #now-span{
+    padding-bottom: 6px;
+    border-bottom: 3px solid green;
+}

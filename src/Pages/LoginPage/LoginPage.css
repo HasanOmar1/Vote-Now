@@ -1,0 +1,79 @@
+.LoginPage{
+    background-color: #333;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LoginPage .login-container{
+    width: 500px;
+    height: 600px;
+    background-color: rgb(247, 247, 247);
+    border-radius: 10px;
+    border: 5px solid rgba(49, 49, 124, 0.585);
+    color: #333;
+
+}
+
+.LoginPage .title-container{
+    font-size: 3rem;
+    display: flex;
+    margin-top: 10px;
+    margin-left: 120px;
+    border: 5px solid;
+    border-left-color: goldenrod;
+    border-right-color: rgb(218, 32, 137);
+    padding: 0 10px;
+    width: 230px;
+    border-top: none;
+    border-bottom: none;
+    
+}
+
+.LoginPage #now-span{
+    border-bottom: 5px solid green;
+}
+.LoginPage .name-container{
+    margin-top: 2rem;
+    margin-left: 3rem;
+
+}
+.LoginPage .password-container{
+    margin-top: 1rem;
+    margin-left: 3rem;
+}
+.LoginPage label{
+    font-size: 2rem;
+    padding-bottom: 10px;
+}
+.LoginPage input{
+    width: 350px;
+    font-size: 1.6rem;
+    padding-left: 10px;
+    padding: 10px;
+    height: 50px;
+
+}
+.LoginPage .center{
+    display: flex;
+    flex-direction: column;
+}
+
+.LoginPage button{
+    padding: 10px 50px;
+    margin-top: 2rem;
+    margin-left: 9rem;
+    cursor: pointer;
+    font-size: 2rem;
+    background-color: #e07d7d;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+
+}
+
+.LoginPage button:hover{
+    background-color: goldenrod;
+}
