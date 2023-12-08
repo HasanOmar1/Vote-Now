@@ -9,10 +9,10 @@ import axios from "../../axiosConfig";
 import Spinner from "../../components/Spinner/Spinner";
 
 export default function VotingPage() {
+  const [isCurrentlyVoting, setIsCurrentlyVoting] = useState(false);
+
   const { loggedUser, getLoggedUser } = useLoggedUser();
   const { currentUser } = useCurrentUser();
-  const [isCurrentlyVoting, setIsCurrentlyVoting] = useState(false);
-  const [changeVoteMsg, setChangeVoteMsg] = useState(false);
 
   useEffect(() => {
     try {
@@ -45,8 +45,6 @@ export default function VotingPage() {
                   img={card.img}
                   isCurrentlyVoting={isCurrentlyVoting}
                   setIsCurrentlyVoting={setIsCurrentlyVoting}
-                  changeVoteMsg={changeVoteMsg}
-                  setChangeVoteMsg={setChangeVoteMsg}
                 />
               );
             })}

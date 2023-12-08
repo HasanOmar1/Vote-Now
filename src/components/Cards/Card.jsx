@@ -5,8 +5,6 @@ export default function Card({
   title,
   isCurrentlyVoting,
   setIsCurrentlyVoting,
-  changeVoteMsg,
-  setChangeVoteMsg,
 }) {
   const [votes, setVotes] = useState(0);
   const [voteButton, setVoteButton] = useState(false);
@@ -15,18 +13,17 @@ export default function Card({
   function handleVoteClick() {
     setVoteButton(true);
     setIsCurrentlyVoting(true);
-    setChangeVoteMsg(false);
+    setChangeVote(false);
   }
 
   function handleAskToChangeVote() {
     setChangeVote(true);
-    setIsCurrentlyVoting(false);
-    setChangeVoteMsg(true);
+    setIsCurrentlyVoting(true);
     setVotes((prevVote) => prevVote + 1);
   }
   function handleChangeVote() {
     setVoteButton(false);
-    setChangeVoteMsg(false);
+    setIsCurrentlyVoting(false);
     setVotes((prevVote) => prevVote - 1);
   }
 
@@ -46,7 +43,7 @@ export default function Card({
           id="vote-btn"
           className={voteButton ? "hide" : ""}
         >
-          {!changeVoteMsg ? `Vote` : `Change Vote`}
+          Vote
         </button>
       )}
 
@@ -67,7 +64,7 @@ export default function Card({
       {changeVote && (
         <button
           id="change-vote-btn"
-          className={!voteButton && "hide"}
+          className={!voteButton ? "hide" : ""}
           onClick={handleChangeVote}
         >
           Change Vote
