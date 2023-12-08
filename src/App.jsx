@@ -7,6 +7,7 @@ import ChangePageProvider from "./Contexts/ChanePageContext/ChangePageContext";
 import VotingPage from "./Pages/VotingPage/VotingPage";
 import VotesCounterProvider from "./Contexts/VotesCounterContext/VotesCounterContext";
 import { useData } from "./Contexts/DataContext/DataContext";
+import LoggedUserProvider from "./Contexts/LoggedUserContext/LoggedUserContext";
 function App() {
   const { data, changeData } = useData();
 
@@ -15,7 +16,6 @@ function App() {
       try {
         const response = await axios.get("/users");
         changeData(response.data);
-        // console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -27,11 +27,13 @@ function App() {
   return (
     <>
       <ChangePageProvider>
-        <VotesCounterProvider>
-          <SetPages />
-          {/* <LoginPage /> */}
-          {/* <VotingPage /> */}
-        </VotesCounterProvider>
+        <LoggedUserProvider>
+          <VotesCounterProvider>
+            <SetPages />
+            {/* <LoginPage /> */}
+            {/* <VotingPage /> */}
+          </VotesCounterProvider>
+        </LoggedUserProvider>
       </ChangePageProvider>
     </>
   );

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useChangePage } from "../../Contexts/ChanePageContext/ChangePageContext";
 import { useData } from "../../Contexts/DataContext/DataContext";
 import "./LoginPage.css";
+import { useCurrentUser } from "../../Contexts/CurrentUserContext/CurrentUserContext";
 
 export default function LoginPage() {
   // const [emails, setEmails] = useState([]);
@@ -11,6 +12,7 @@ export default function LoginPage() {
 
   const { changePage } = useChangePage();
   const { data } = useData();
+  const { changeCurrentUser } = useCurrentUser();
 
   if (data) {
     const getEmails = data.map((data) => data.email);
@@ -21,6 +23,7 @@ export default function LoginPage() {
     e.preventDefault();
     const isValid = data.map((data) => {
       if (emailInputVal === data.email && passwordInputVal === data.password) {
+        changeCurrentUser(data.id);
         changePage("voting-page");
       } else {
         setErrorMessage(`INVALID`);
