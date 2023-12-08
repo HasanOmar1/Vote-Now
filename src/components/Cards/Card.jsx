@@ -1,14 +1,18 @@
-import { setVotesCounter } from "../../Contexts/VotesCounterContext/VotesCounterContext";
+import { useState } from "react";
 import "./Card.css";
 export default function Card({ img, title }) {
-  const { votesCounter, addToCounter } = setVotesCounter();
+  const [votes, setVotes] = useState(0);
+  function handleVoteClick() {
+    setVotes((prevVotes) => prevVotes + 1);
+  }
+
   return (
     <div className="Card">
       <img src={img} alt={title} />
       <h3>{title}</h3>
-      <button onClick={addToCounter}>Vote</button>
+      <button onClick={handleVoteClick}>Vote</button>
       <h1>
-        Votes: <span className="votes">{votesCounter}</span>
+        Votes: <span className="votes">{votes}</span>
       </h1>
     </div>
   );
