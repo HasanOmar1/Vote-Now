@@ -2,6 +2,7 @@ import React from "react";
 import { useChangePage } from "../../Contexts/ChanePageContext/ChangePageContext";
 import LoginPage from "../LoginPage/LoginPage";
 import VotingPage from "../VotingPage/VotingPage";
+import AdminPage from "../AdminPage/AdminPage";
 
 export default function SetPages() {
   const { currentPage } = useChangePage();
@@ -9,6 +10,7 @@ export default function SetPages() {
     <main>
       {currentPage === "login-page" && <LoginPage />}
       {currentPage === "voting-page" && <VotingPage />}
+      {currentPage === "admin-page" && <AdminPage />}
     </main>
   );
 }

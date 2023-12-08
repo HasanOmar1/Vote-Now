@@ -30,12 +30,83 @@
     padding-bottom: 6px;
     border-bottom: 3px solid green;
 }
-
-.Navbar #logged-user{
+.Navbar .panels{
     position: absolute;
-    top: 15px;
-    right: 300px;
-    font-size: 1.5rem;
-    border: 4px solid rgb(217, 207, 70);
-    padding: 5px 30px;
+    left: 69%;
+    top: 20px;
+    width: 30ch;
 }
+.Navbar .name-container{
+    position: absolute;
+    font-size: 1.2rem;
+    padding: 5px 40px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: rgb(164, 116, 68);
+    opacity: 0.8;
+    
+}
+
+.Navbar .name-container:hover{
+    transition: all 0.7s;
+    background-color: darkcyan;
+    transform: scale(1.1);
+
+}
+.Navbar .user-icon{
+    position: absolute;
+    left: 10px;
+    top: 7px;
+    color: darkmagenta;
+
+
+}
+.Navbar .arrow-down-icon{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 15px;
+    color: darkred;
+
+}
+
+.Navbar .log-out-panel,
+.Navbar .vote-panel,
+.Navbar .admin-panel{
+    position: absolute;
+    top:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 215px;
+    padding: 10px;
+    border-radius: 10px;
+    height: 35px;
+    background-color: #051937;
+}
+
+.Navbar .vote-panel{
+top: 95px;
+}
+.Navbar .admin-panel{
+    top: 140px;
+    z-index: 999;
+}
+
+.Navbar .log-out-panel:hover,
+.Navbar .vote-panel:hover,
+.Navbar .admin-panel:hover{
+    transition: all 0.7s;
+    background-color: darkcyan;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.Navbar .hide{
+    display: none;
+}
+
+.Navbar .open-panels{
+    display: block;
+}
+

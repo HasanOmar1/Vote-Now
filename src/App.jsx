@@ -9,6 +9,7 @@ import { useData } from "./Contexts/DataContext/DataContext";
 import LoggedUserProvider from "./Contexts/LoggedUserContext/LoggedUserContext";
 import UserInfoProvider from "./Contexts/UserInfoContext/UserInfoContext";
 import HasVotedProvider from "./Contexts/HasVotedContext/HasVotedContext";
+import AdminPage from "./Pages/AdminPage/AdminPage";
 function App() {
   const { data, changeData } = useData();
 
@@ -34,6 +35,7 @@ function App() {
               <SetPages />
               {/* <LoginPage /> */}
               {/* <VotingPage /> */}
+              {/* <AdminPage /> */}
             </HasVotedProvider>
           </LoggedUserProvider>
         </ChangePageProvider>

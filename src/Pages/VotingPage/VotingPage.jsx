@@ -45,7 +45,7 @@ export default function VotingPage() {
         <div>
           <Navbar />
           <h1 className="page-title">
-            Which cat do you think is the <span id="cool-span">Coolest</span>{" "}
+            Which cat do you think is the <span id="cool-span">Coolest</span>
             one?
           </h1>
           <div className="cards">
