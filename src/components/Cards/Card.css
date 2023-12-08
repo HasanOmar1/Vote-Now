@@ -53,9 +53,6 @@
     transform: scale(1.1);
 }
 
-.Card .hide{
-    display: none;
-}
 
 .Card .btns-container{
     display: flex;
@@ -63,7 +60,7 @@
     align-items: center;
     gap: 20px;
     margin-top: 50px;
-      
+    
 }
 
 .Card #cancel-btn{
@@ -76,5 +73,13 @@
 .Card #vote-btn{
     background-color: rgb(146, 26, 82);
     margin: 50px 100px;
-
+    
+}
+.Card #change-vote-btn{
+    background-color: rgb(146, 124, 26);
+    margin: 50px 100px;
+    
+}
+.Card .hide{
+    display: none;
 }

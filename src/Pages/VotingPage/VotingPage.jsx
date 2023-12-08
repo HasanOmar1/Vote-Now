@@ -11,6 +11,8 @@ import Spinner from "../../components/Spinner/Spinner";
 export default function VotingPage() {
   const { loggedUser, getLoggedUser } = useLoggedUser();
   const { currentUser } = useCurrentUser();
+  const [isCurrentlyVoting, setIsCurrentlyVoting] = useState(false);
+  const [changeVoteMsg, setChangeVoteMsg] = useState(false);
 
   useEffect(() => {
     try {
@@ -36,7 +38,17 @@ export default function VotingPage() {
           </h1>
           <div className="cards">
             {cardsArr.map((card, index) => {
-              return <Card key={index} title={card.title} img={card.img} />;
+              return (
+                <Card
+                  key={index}
+                  title={card.title}
+                  img={card.img}
+                  isCurrentlyVoting={isCurrentlyVoting}
+                  setIsCurrentlyVoting={setIsCurrentlyVoting}
+                  changeVoteMsg={changeVoteMsg}
+                  setChangeVoteMsg={setChangeVoteMsg}
+                />
+              );
             })}
           </div>
         </div>
