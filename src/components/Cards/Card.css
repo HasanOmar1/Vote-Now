@@ -40,16 +40,12 @@
 
 .Card button{
     padding: 5px 20px;
-    font-size: 1.5rem;
-    margin: 50px 80px;
+    font-size: 1.2rem;
     cursor: pointer;
     background-color: darkgoldenrod;
     color: white;
-    border: 1px solid springgreen;
     border-radius: 10px;
     border: none;
-    width: 10ch;
-    
 }
 
 .Card button:hover{
@@ -61,3 +57,24 @@
     display: none;
 }
 
+.Card .btns-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+      
+}
+
+.Card #cancel-btn{
+    background-color: rgb(190, 33, 33);
+}
+
+.Card #sure-btn{
+    background-color: rgb(26, 146, 26);
+}
+.Card #vote-btn{
+    background-color: rgb(146, 26, 82);
+    margin: 50px 100px;
+
+}

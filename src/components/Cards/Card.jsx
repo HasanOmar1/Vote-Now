@@ -5,12 +5,11 @@ export default function Card({ img, title }) {
   const [voteButton, setVoteButton] = useState(false);
 
   function handleVoteClick() {
-    // setVoteButton(true);
+    setVoteButton(true);
   }
 
   function handleChangeVote() {
-    // setVoteButton("vote");
-    setVotes((prevVotes) => prevVotes + 1);
+    setVoteButton(false);
   }
 
   return (
@@ -18,7 +17,24 @@ export default function Card({ img, title }) {
       <img src={img} alt={title} />
       <h3>{title}</h3>
 
-      <button onClick={handleVoteClick}>Vote</button>
+      <button
+        onClick={handleVoteClick}
+        id="vote-btn"
+        className={voteButton && "hide"}
+      >
+        Vote
+      </button>
+
+      {voteButton && (
+        <div className={`btns-container ${!voteButton && "hide"}`}>
+          <button onClick={handleChangeVote} id="sure-btn">
+            Im Sure
+          </button>
+          <button onClick={handleChangeVote} id="cancel-btn">
+            Cancel
+          </button>
+        </div>
+      )}
 
       <h1>
         Votes: <span className="votes">{votes}</span>
