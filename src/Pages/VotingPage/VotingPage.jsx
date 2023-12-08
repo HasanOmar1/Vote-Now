@@ -6,9 +6,10 @@ import { useCurrentUser } from "../../Contexts/CurrentUserContext/CurrentUserCon
 import { useLoggedUser } from "../../Contexts/LoggedUserContext/LoggedUserContext";
 import { useEffect, useState } from "react";
 import axios from "../../axiosConfig";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function VotingPage() {
-  const { getLoggedUser } = useLoggedUser();
+  const { loggedUser, getLoggedUser } = useLoggedUser();
   const { currentUser } = useCurrentUser();
 
   useEffect(() => {
@@ -23,17 +24,27 @@ export default function VotingPage() {
       console.log(error);
     }
   }, []);
+  // if (!loggedUser) {
+  //   <Spinner />;
+  // }
   return (
     <main className="VotingPage page">
-      <Navbar />
-      <h1 className="page-title">
-        Which cat do you think is the <span id="cool-span">Coolest</span> one?
-      </h1>
-      <div className="cards">
-        {cardsArr.map((card, index) => {
-          return <Card key={index} title={card.title} img={card.img} />;
-        })}
-      </div>
+      {loggedUser ? (
+        <div>
+          <Navbar />
+          <h1 className="page-title">
+            Which cat do you think is the <span id="cool-span">Coolest</span>{" "}
+            one?
+          </h1>
+          <div className="cards">
+            {cardsArr.map((card, index) => {
+              return <Card key={index} title={card.title} img={card.img} />;
+            })}
+          </div>
+        </div>
+      ) : (
+        <Spinner />
+      )}
     </main>
   );
 }

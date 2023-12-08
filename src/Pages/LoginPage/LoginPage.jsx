@@ -3,9 +3,10 @@ import { useChangePage } from "../../Contexts/ChanePageContext/ChangePageContext
 import { useData } from "../../Contexts/DataContext/DataContext";
 import "./LoginPage.css";
 import { useCurrentUser } from "../../Contexts/CurrentUserContext/CurrentUserContext";
+import Spinner from "../../components/Spinner/Spinner";
+import { useLoggedUser } from "../../Contexts/LoggedUserContext/LoggedUserContext";
 
 export default function LoginPage() {
-  // const [emails, setEmails] = useState([]);
   const [emailInputVal, setEmailInputVal] = useState("");
   const [passwordInputVal, setPasswordInputVal] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -13,11 +14,7 @@ export default function LoginPage() {
   const { changePage } = useChangePage();
   const { data } = useData();
   const { changeCurrentUser } = useCurrentUser();
-
-  if (data) {
-    const getEmails = data.map((data) => data.email);
-    const getPassword = data.map((data) => data.password);
-  }
+  const { loggedUser } = useLoggedUser();
 
   function handleOnSubmit(e) {
     e.preventDefault();

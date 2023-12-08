@@ -2,6 +2,7 @@ import { useLoggedUser } from "../../Contexts/LoggedUserContext/LoggedUserContex
 import "./Navbar.css";
 export default function Navbar() {
   const { loggedUser } = useLoggedUser();
+
   return (
     <nav className="Navbar">
       <div className="logo-container">
