@@ -41,16 +41,23 @@
 .Card button{
     padding: 5px 20px;
     font-size: 1.5rem;
-    margin: 50px 100px;
+    margin: 50px 80px;
     cursor: pointer;
     background-color: darkgoldenrod;
     color: white;
     border: 1px solid springgreen;
     border-radius: 10px;
     border: none;
+    width: 10ch;
+    
 }
 
 .Card button:hover{
     background-color: rgb(213, 157, 15);
     transform: scale(1.1);
 }
+
+.Card .hide{
+    display: none;
+}
+
