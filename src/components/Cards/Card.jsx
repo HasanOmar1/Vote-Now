@@ -1,5 +1,10 @@
 import { useRef, useState } from "react";
 import "./Card.css";
+import { useLoggedUser } from "../../Contexts/LoggedUserContext/LoggedUserContext";
+import { getUserInfo } from "../../Contexts/UserInfoContext/UserInfoContext";
+import { setHasVoted } from "../../Contexts/HasVotedContext/HasVotedContext";
+import axios from "../../axiosConfig";
+import { useCurrentUser } from "../../Contexts/CurrentUserContext/CurrentUserContext";
 export default function Card({
   img,
   title,
@@ -9,6 +14,12 @@ export default function Card({
   const [votes, setVotes] = useState(0);
   const [voteButton, setVoteButton] = useState(false);
   const [changeVote, setChangeVote] = useState(false);
+
+  const { currentUser } = useCurrentUser();
+  const { isVoted, changeVoteStatus } = setHasVoted();
+  const { userInfo, changeUserInfo } = getUserInfo();
+
+  // console.log(userInfo.hasVoted);
 
   function handleVoteClick() {
     setVoteButton(true);
@@ -20,11 +31,14 @@ export default function Card({
     setChangeVote(true);
     setIsCurrentlyVoting(true);
     setVotes((prevVote) => prevVote + 1);
+
+    changeVoteStatus();
   }
   function handleChangeVote() {
     setVoteButton(false);
     setIsCurrentlyVoting(false);
     setVotes((prevVote) => prevVote - 1);
+    changeVoteStatus();
   }
 
   function cancelVote() {

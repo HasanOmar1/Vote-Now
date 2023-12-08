@@ -7,6 +7,8 @@ import ChangePageProvider from "./Contexts/ChanePageContext/ChangePageContext";
 import VotingPage from "./Pages/VotingPage/VotingPage";
 import { useData } from "./Contexts/DataContext/DataContext";
 import LoggedUserProvider from "./Contexts/LoggedUserContext/LoggedUserContext";
+import UserInfoProvider from "./Contexts/UserInfoContext/UserInfoContext";
+import HasVotedProvider from "./Contexts/HasVotedContext/HasVotedContext";
 function App() {
   const { data, changeData } = useData();
 
@@ -25,13 +27,17 @@ function App() {
   console.log(data);
   return (
     <>
-      <ChangePageProvider>
-        <LoggedUserProvider>
-          <SetPages />
-          {/* <LoginPage /> */}
-          {/* <VotingPage /> */}
-        </LoggedUserProvider>
-      </ChangePageProvider>
+      <UserInfoProvider>
+        <ChangePageProvider>
+          <LoggedUserProvider>
+            <HasVotedProvider>
+              <SetPages />
+              {/* <LoginPage /> */}
+              {/* <VotingPage /> */}
+            </HasVotedProvider>
+          </LoggedUserProvider>
+        </ChangePageProvider>
+      </UserInfoProvider>
     </>
   );
 }

@@ -7,10 +7,14 @@ import { useLoggedUser } from "../../Contexts/LoggedUserContext/LoggedUserContex
 import { useEffect, useState } from "react";
 import axios from "../../axiosConfig";
 import Spinner from "../../components/Spinner/Spinner";
+import { getUserInfo } from "../../Contexts/UserInfoContext/UserInfoContext";
+import { setHasVoted } from "../../Contexts/HasVotedContext/HasVotedContext";
 
 export default function VotingPage() {
   const [isCurrentlyVoting, setIsCurrentlyVoting] = useState(false);
 
+  const { isVoted, changeVoteStatus } = setHasVoted();
+  const { userInfo, changeUserInfo } = getUserInfo();
   const { loggedUser, getLoggedUser } = useLoggedUser();
   const { currentUser } = useCurrentUser();
 
@@ -18,7 +22,7 @@ export default function VotingPage() {
     try {
       async function fetchUser() {
         const response = await axios.get(`/users/${currentUser}`);
-        // console.log(response.data);
+        changeUserInfo(response.data);
         getLoggedUser(response.data.username);
       }
       fetchUser();
@@ -26,6 +30,14 @@ export default function VotingPage() {
       console.log(error);
     }
   }, []);
+
+  async function updateVoteStatus() {
+    const response = await axios.put(`/users/${currentUser}`, {
+      hasVoted: isVoted,
+    });
+    return response;
+  }
+  updateVoteStatus();
 
   return (
     <main className="VotingPage page">
