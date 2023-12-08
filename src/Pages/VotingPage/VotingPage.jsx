@@ -24,9 +24,7 @@ export default function VotingPage() {
       console.log(error);
     }
   }, []);
-  // if (!loggedUser) {
-  //   <Spinner />;
-  // }
+
   return (
     <main className="VotingPage page">
       {loggedUser ? (
