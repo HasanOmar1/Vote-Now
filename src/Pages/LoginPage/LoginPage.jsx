@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useChangePage } from "../../Contexts/ChanePageContext/ChangePageContext";
 import { useData } from "../../Contexts/DataContext/DataContext";
 import "./LoginPage.css";
@@ -9,12 +9,13 @@ import LogInSpinner from "../../components/Spinner/LogInSpinner";
 export default function LoginPage() {
   const [emailInputVal, setEmailInputVal] = useState("");
   const [passwordInputVal, setPasswordInputVal] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+
+  const emailInput = useRef();
+  const invalidMsgRef = useRef();
 
   const { changePage } = useChangePage();
   const { data } = useData();
   const { changeCurrentUser } = useCurrentUser();
-  const { loggedUser } = useLoggedUser();
 
   function handleOnSubmit(e) {
     e.preventDefault();
@@ -23,10 +24,16 @@ export default function LoginPage() {
         changeCurrentUser(data.id);
         changePage("voting-page");
       } else {
-        setErrorMessage(`INVALID`);
+        invalidMsgRef.current.classList = `error`;
+        setEmailInputVal("");
+        setPasswordInputVal("");
       }
     });
     return isValid;
+  }
+
+  function closeInvalidMsg() {
+    invalidMsgRef.current.classList = `hide`;
   }
 
   return (
@@ -50,6 +57,7 @@ export default function LoginPage() {
                   required
                   value={emailInputVal}
                   onChange={(e) => setEmailInputVal(e.target.value)}
+                  ref={emailInput}
                 />
               </div>
               <div className="password-container center">
@@ -65,7 +73,16 @@ export default function LoginPage() {
               <button type="submit">Login</button>
             </form>
           </div>
-          <div className="error">{errorMessage}</div>
+          <div className="hide" ref={invalidMsgRef}>
+            <h1>ACCOUNT NOT FOUND</h1>
+            <h2>Accounts you can try :</h2>
+            <h3>Admin: hasan@gmail.com</h3>
+            <h3>Password : admin</h3>
+            <br />
+            <h3>User: Diana.Rempel89@yahoo.com</h3>
+            <h3>Password : diana</h3>
+            <button onClick={closeInvalidMsg}>X</button>
+          </div>
         </div>
       ) : (
         <LogInSpinner />
