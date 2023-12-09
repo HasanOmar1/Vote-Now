@@ -3,8 +3,8 @@ import { useChangePage } from "../../Contexts/ChanePageContext/ChangePageContext
 import { useData } from "../../Contexts/DataContext/DataContext";
 import "./LoginPage.css";
 import { useCurrentUser } from "../../Contexts/CurrentUserContext/CurrentUserContext";
-import Spinner from "../../components/Spinner/Spinner";
 import { useLoggedUser } from "../../Contexts/LoggedUserContext/LoggedUserContext";
+import LogInSpinner from "../../components/Spinner/LogInSpinner";
 
 export default function LoginPage() {
   const [emailInputVal, setEmailInputVal] = useState("");
@@ -68,7 +68,7 @@ export default function LoginPage() {
           <div className="error">{errorMessage}</div>
         </div>
       ) : (
-        <Spinner />
+        <LogInSpinner />
       )}
     </main>
   );
