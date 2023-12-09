@@ -36,7 +36,7 @@ export default function AdminPage() {
   return (
     <main className="AdminPage page">
       {/* {loggedUser && <Navbar />} */}
-      {data ? (
+      {data && loggedUser ? (
         <div>
           <Navbar />
           <h1 className="title">Admin Panel</h1>

@@ -123,9 +123,48 @@ top: 95px;
 left: 100px;
 }
 .Navbar .logo-container{
-
     margin-left: 15px;
     border: none;
 
+}
+
+.Navbar .log-out-panel,
+.Navbar .vote-panel,
+.Navbar .admin-panel{
+    top:40px;
+    width: 120px;
+    height: 30px;
+}
+.Navbar .log-out-panel{
+    left: 10px;
+
+}
+.Navbar .vote-panel{
+top: 40px;
+left: -130px;
+ }
+
+.Navbar .admin-panel{
+    top: 40px;
+    right: 0px;
+    z-index: 1;
+}
+    
+
+
+.Navbar .panels{
+    left: 30%;
+    top: 20px;
+    width: 30ch;
+}
+.Navbar .name-container{
+    font-size: 1rem;
+    padding: 5px 10px;
+    width: 155px;
+    
+}
+
+.Navbar .user-icon{
+display: none;
 }
 }
