@@ -30,7 +30,7 @@ export default function AdminPage() {
               {data.map((data, i) => {
                 return (
                   <div key={i} className="data-container">
-                    <div className="name-container">
+                    <div className="username-container">
                       <h3>{data.username}</h3>
                     </div>
                     <div className="email-container">
