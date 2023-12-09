@@ -10,6 +10,7 @@ import LoggedUserProvider from "./Contexts/LoggedUserContext/LoggedUserContext";
 import UserInfoProvider from "./Contexts/UserInfoContext/UserInfoContext";
 import HasVotedProvider from "./Contexts/HasVotedContext/HasVotedContext";
 import AdminPage from "./Pages/AdminPage/AdminPage";
+import TotalVotesProvider from "./Contexts/TotalVotesContext/TotalVotesContext";
 function App() {
   const { data, changeData } = useData();
 
@@ -32,10 +33,12 @@ function App() {
         <ChangePageProvider>
           <LoggedUserProvider>
             <HasVotedProvider>
-              <SetPages />
-              {/* <LoginPage /> */}
-              {/* <VotingPage /> */}
-              {/* <AdminPage /> */}
+              <TotalVotesProvider>
+                <SetPages />
+                {/* <LoginPage /> */}
+                {/* <VotingPage /> */}
+                {/* <AdminPage /> */}
+              </TotalVotesProvider>
             </HasVotedProvider>
           </LoggedUserProvider>
         </ChangePageProvider>

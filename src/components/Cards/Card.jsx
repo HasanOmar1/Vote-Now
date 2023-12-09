@@ -59,25 +59,30 @@ export default function Card({
   }, []);
 
   useEffect(() => {
-    const voteButtonData = localStorage.getItem("voteButton");
+    const voteButtonData = localStorage.getItem(`vote-${index}-Button`);
     if (voteButtonData) {
       setVoteButton(JSON.parse(voteButtonData));
     }
   }, []);
 
   useEffect(() => {
-    const changeVoteButtonData = localStorage.getItem("changeVoteButton");
+    const changeVoteButtonData = localStorage.getItem(
+      `change-${index}-VoteButton`
+    );
     if (changeVoteButtonData) {
       setChangeVote(JSON.parse(changeVoteButtonData));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("voteButton", JSON.stringify(voteButton));
+    localStorage.setItem(`vote-${index}-Button`, JSON.stringify(voteButton));
   }, [voteButton]);
 
   useEffect(() => {
-    localStorage.setItem("changeVoteButton", JSON.stringify(changeVote));
+    localStorage.setItem(
+      `change-${index}-VoteButton`,
+      JSON.stringify(changeVote)
+    );
   }, [changeVote]);
 
   return (

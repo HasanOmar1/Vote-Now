@@ -54,12 +54,15 @@ export default function Navbar() {
           <div className="log-out-panel" onClick={logOut}>
             <h3>Logout</h3>
           </div>
-          <div className="vote-panel" onClick={directToVotePage}>
-            <h3>Vote</h3>
-          </div>
           {userInfo.role === "admin" && (
-            <div className="admin-panel" onClick={directToAdminPage}>
-              <h3>Admin</h3>
+            <div>
+              <div className="vote-panel" onClick={directToVotePage}>
+                <h3>Vote</h3>
+              </div>
+
+              <div className="admin-panel" onClick={directToAdminPage}>
+                <h3>Admin</h3>
+              </div>
             </div>
           )}
         </div>

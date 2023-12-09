@@ -5,10 +5,14 @@ import { useData } from "../../Contexts/DataContext/DataContext";
 import { useEffect, useState } from "react";
 import axios from "../../axiosConfig";
 import Spinner from "../../components/Spinner/Spinner";
+import { setHasVoted } from "../../Contexts/HasVotedContext/HasVotedContext";
+import { getTotalVotes } from "../../Contexts/TotalVotesContext/TotalVotesContext";
+import { getUserInfo } from "../../Contexts/UserInfoContext/UserInfoContext";
 
 export default function AdminPage() {
   const { loggedUser, getLoggedUser } = useLoggedUser();
   const { data, changeData } = useData();
+  const { totalVotes, addToTotalVotes } = getTotalVotes();
 
   useEffect(() => {
     async function fetchData() {
@@ -22,6 +26,13 @@ export default function AdminPage() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (data) {
+      const filtered = data.filter((votes) => votes.hasVoted === true);
+      addToTotalVotes(filtered.length);
+    }
+  }, []);
+
   return (
     <main className="AdminPage page">
       {/* {loggedUser && <Navbar />} */}
@@ -33,7 +44,7 @@ export default function AdminPage() {
             <div className="info-container">
               {data.map((data, i) => {
                 return (
-                  <div key={i} className="data-container">
+                  <div key={i} className={`data-container`}>
                     <div className="username-container">
                       <h3>{data.username}</h3>
                     </div>
@@ -48,6 +59,8 @@ export default function AdminPage() {
               })}
             </div>
           </div>
+
+          <h1 className="total-votes">Total Votes : {totalVotes}</h1>
         </div>
       ) : (
         <Spinner />
