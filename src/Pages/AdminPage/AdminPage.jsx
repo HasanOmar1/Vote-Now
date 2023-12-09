@@ -2,26 +2,30 @@ import "./AdminPage.css";
 import { useLoggedUser } from "../../Contexts/LoggedUserContext/LoggedUserContext";
 import Navbar from "../../components/Navbar/Navbar";
 import { useData } from "../../Contexts/DataContext/DataContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "../../axiosConfig";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function AdminPage() {
   const { loggedUser, getLoggedUser } = useLoggedUser();
-  const { data } = useData();
+  const { data, changeData } = useData();
 
-  const [fetchDataInfo, setFetchDataInfo] = useState("");
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get("/users");
+        changeData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
 
-  if (data) {
-    const info = data.map((data) => {
-      const username = data.username;
-      const email = data.email;
-      const voteStatus = data.hasVoted;
-    });
-  }
-  // console.log(loggedUser);
   return (
     <main className="AdminPage page">
       {/* {loggedUser && <Navbar />} */}
-      {data && (
+      {data && loggedUser ? (
         <div>
           <Navbar />
           <h1 className="title">Admin Panel</h1>
@@ -42,12 +46,11 @@ export default function AdminPage() {
                   </div>
                 );
               })}
-              {/* <h3>{username}</h3>
-              <h3>hasan@gmail.com</h3>
-              <h3>Not Voted</h3> */}
             </div>
           </div>
         </div>
+      ) : (
+        <Spinner />
       )}
     </main>
   );

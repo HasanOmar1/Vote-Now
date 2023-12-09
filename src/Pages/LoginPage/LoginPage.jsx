@@ -70,41 +70,6 @@ export default function LoginPage() {
       ) : (
         <Spinner />
       )}
-      {/* <div className="login-container">
-        <div className="title-container">
-          <h1>
-            Vote <span id="now-span">Now</span>
-          </h1>
-        </div>
-
-        <div className="form-container">
-          <form onSubmit={handleOnSubmit}>
-            <div className="name-container center">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                required
-                value={emailInputVal}
-                onChange={(e) => setEmailInputVal(e.target.value)}
-              />
-            </div>
-            <div className="password-container center">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                value={passwordInputVal}
-                onChange={(e) => setPasswordInputVal(e.target.value)}
-              />
-            </div>
-            <button type="submit">Login</button>
-          </form>
-        </div>
-        <div className="error">{errorMessage}</div>
-      </div> */}
     </main>
   );
 }

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Card.css";
 import { useLoggedUser } from "../../Contexts/LoggedUserContext/LoggedUserContext";
 import { getUserInfo } from "../../Contexts/UserInfoContext/UserInfoContext";
@@ -10,6 +10,7 @@ export default function Card({
   title,
   isCurrentlyVoting,
   setIsCurrentlyVoting,
+  index,
 }) {
   const [votes, setVotes] = useState(0);
   const [voteButton, setVoteButton] = useState(false);
@@ -18,8 +19,6 @@ export default function Card({
   const { currentUser } = useCurrentUser();
   const { isVoted, changeVoteStatus } = setHasVoted();
   const { userInfo, changeUserInfo } = getUserInfo();
-
-  // console.log(userInfo.hasVoted);
 
   function handleVoteClick() {
     setVoteButton(true);
@@ -30,14 +29,21 @@ export default function Card({
   function handleAskToChangeVote() {
     setChangeVote(true);
     setIsCurrentlyVoting(true);
-    setVotes((prevVote) => prevVote + 1);
-
+    setVotes((prevVote) => {
+      const newVotes = +prevVote + 1;
+      localStorage.setItem(`card-${index}-votes`, newVotes);
+      return newVotes;
+    });
     changeVoteStatus();
   }
   function handleChangeVote() {
     setVoteButton(false);
     setIsCurrentlyVoting(false);
-    setVotes((prevVote) => prevVote - 1);
+    setVotes((prevVote) => {
+      const newVotes = +prevVote - 1;
+      localStorage.setItem(`card-${index}-votes`, newVotes);
+      return newVotes;
+    });
     changeVoteStatus();
   }
 
@@ -45,6 +51,34 @@ export default function Card({
     setVoteButton(false);
     setIsCurrentlyVoting(false);
   }
+  useEffect(() => {
+    const currentVotes = localStorage.getItem(`card-${index}-votes`);
+    if (currentVotes) {
+      setVotes(currentVotes);
+    }
+  }, []);
+
+  useEffect(() => {
+    const voteButtonData = localStorage.getItem("voteButton");
+    if (voteButtonData) {
+      setVoteButton(JSON.parse(voteButtonData));
+    }
+  }, []);
+
+  useEffect(() => {
+    const changeVoteButtonData = localStorage.getItem("changeVoteButton");
+    if (changeVoteButtonData) {
+      setChangeVote(JSON.parse(changeVoteButtonData));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("voteButton", JSON.stringify(voteButton));
+  }, [voteButton]);
+
+  useEffect(() => {
+    localStorage.setItem("changeVoteButton", JSON.stringify(changeVote));
+  }, [changeVote]);
 
   return (
     <div className="Card">

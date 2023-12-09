@@ -9,6 +9,7 @@ import axios from "../../axiosConfig";
 import Spinner from "../../components/Spinner/Spinner";
 import { getUserInfo } from "../../Contexts/UserInfoContext/UserInfoContext";
 import { setHasVoted } from "../../Contexts/HasVotedContext/HasVotedContext";
+import { useData } from "../../Contexts/DataContext/DataContext";
 
 export default function VotingPage() {
   const [isCurrentlyVoting, setIsCurrentlyVoting] = useState(false);
@@ -17,6 +18,19 @@ export default function VotingPage() {
   const { userInfo, changeUserInfo } = getUserInfo();
   const { loggedUser, getLoggedUser } = useLoggedUser();
   const { currentUser } = useCurrentUser();
+  const { data, changeData } = useData();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get("/users");
+        changeData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     try {
@@ -32,10 +46,14 @@ export default function VotingPage() {
   }, []);
 
   async function updateVoteStatus() {
-    const response = await axios.put(`/users/${currentUser}`, {
-      hasVoted: isVoted,
-    });
-    return response;
+    try {
+      const response = await axios.put(`/users/${currentUser}`, {
+        hasVoted: isVoted,
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   }
   updateVoteStatus();
 
@@ -57,6 +75,7 @@ export default function VotingPage() {
                   img={card.img}
                   isCurrentlyVoting={isCurrentlyVoting}
                   setIsCurrentlyVoting={setIsCurrentlyVoting}
+                  index={index}
                 />
               );
             })}
@@ -65,6 +84,25 @@ export default function VotingPage() {
       ) : (
         <Spinner />
       )}
+      {/* <Navbar />
+      <h1 className="page-title">
+        Which cat do you think is the <span id="cool-span">Coolest</span>
+        one?
+      </h1>
+      <div className="cards">
+        {cardsArr.map((card, index) => {
+          return (
+            <Card
+              key={index}
+              title={card.title}
+              img={card.img}
+              isCurrentlyVoting={isCurrentlyVoting}
+              setIsCurrentlyVoting={setIsCurrentlyVoting}
+              index={index}
+            />
+          );
+        })}
+      </div> */}
     </main>
   );
 }
