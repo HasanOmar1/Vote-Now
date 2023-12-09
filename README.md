@@ -6,7 +6,7 @@ https://vote-for-your-favorite-cat.netlify.app/
 
 ---
 
-I have created a phone responsive voting site.
+I have created a phone responsive voting site using React.
 First there is a login page , I have used mockapi to create my own data.
 You can log in as admin which has more features than normal user such as admin panel.
 
@@ -43,6 +43,8 @@ who voted and who did not.
 I have also added a total votes which shows how many accounts voted.
 
 ---
+
+!This site is not perfect , it has some bugs.
 
 ## Site's Preview
 

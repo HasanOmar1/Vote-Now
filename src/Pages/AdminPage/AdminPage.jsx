@@ -2,17 +2,15 @@ import "./AdminPage.css";
 import { useLoggedUser } from "../../Contexts/LoggedUserContext/LoggedUserContext";
 import Navbar from "../../components/Navbar/Navbar";
 import { useData } from "../../Contexts/DataContext/DataContext";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "../../axiosConfig";
 import Spinner from "../../components/Spinner/Spinner";
-import { setHasVoted } from "../../Contexts/HasVotedContext/HasVotedContext";
 import { getTotalVotes } from "../../Contexts/TotalVotesContext/TotalVotesContext";
-import { getUserInfo } from "../../Contexts/UserInfoContext/UserInfoContext";
 
 export default function AdminPage() {
-  const { loggedUser, getLoggedUser } = useLoggedUser();
+  const { loggedUser } = useLoggedUser();
   const { data, changeData } = useData();
-  const { totalVotes, addToTotalVotes } = getTotalVotes();
+  const { totalVotes } = getTotalVotes();
 
   useEffect(() => {
     async function fetchData() {
@@ -26,16 +24,8 @@ export default function AdminPage() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      const filtered = data.filter((votes) => votes.hasVoted === true);
-      addToTotalVotes(filtered.length);
-    }
-  }, []);
-
   return (
     <main className="AdminPage page">
-      {/* {loggedUser && <Navbar />} */}
       {data && loggedUser ? (
         <div>
           <Navbar />

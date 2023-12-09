@@ -10,15 +10,17 @@ import Spinner from "../../components/Spinner/Spinner";
 import { getUserInfo } from "../../Contexts/UserInfoContext/UserInfoContext";
 import { setHasVoted } from "../../Contexts/HasVotedContext/HasVotedContext";
 import { useData } from "../../Contexts/DataContext/DataContext";
+import { getTotalVotes } from "../../Contexts/TotalVotesContext/TotalVotesContext";
 
 export default function VotingPage() {
   const [isCurrentlyVoting, setIsCurrentlyVoting] = useState(false);
 
-  const { isVoted, changeVoteStatus } = setHasVoted();
-  const { userInfo, changeUserInfo } = getUserInfo();
+  const { isVoted } = setHasVoted();
+  const { changeUserInfo } = getUserInfo();
   const { loggedUser, getLoggedUser } = useLoggedUser();
   const { currentUser } = useCurrentUser();
   const { data, changeData } = useData();
+  const { addToTotalVotes } = getTotalVotes();
 
   useEffect(() => {
     async function fetchData() {
@@ -45,6 +47,13 @@ export default function VotingPage() {
     }
   }, []);
 
+  useEffect(() => {
+    if (data) {
+      const filtered = data.filter((votes) => votes.hasVoted === true);
+      addToTotalVotes(filtered.length);
+    }
+  }, []);
+
   async function updateVoteStatus() {
     try {
       const response = await axios.put(`/users/${currentUser}`, {
@@ -59,7 +68,7 @@ export default function VotingPage() {
 
   return (
     <main className="VotingPage page">
-      {/* {loggedUser ? (
+      {loggedUser ? (
         <div>
           <Navbar />
           <h1 className="page-title">
@@ -83,26 +92,7 @@ export default function VotingPage() {
         </div>
       ) : (
         <Spinner />
-      )} */}
-      <Navbar />
-      <h1 className="page-title">
-        Which cat do you think is the <span id="cool-span">Coolest</span>
-        one?
-      </h1>
-      <div className="cards">
-        {cardsArr.map((card, index) => {
-          return (
-            <Card
-              key={index}
-              title={card.title}
-              img={card.img}
-              isCurrentlyVoting={isCurrentlyVoting}
-              setIsCurrentlyVoting={setIsCurrentlyVoting}
-              index={index}
-            />
-          );
-        })}
-      </div>
+      )}
     </main>
   );
 }
