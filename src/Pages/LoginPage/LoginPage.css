@@ -114,3 +114,62 @@
     display: none;
 }
 
+@media (max-width: 576px) {
+
+.LoginPage .login-container{
+height: 500px;
+width: 350px;
+position: absolute;
+top: 20%;
+
+}
+.LoginPage label{
+    font-size: 2rem;
+}
+.LoginPage input{
+    width: 200px;
+    font-size: 1.2rem;
+    height: 50px;
+}
+.LoginPage button{
+    font-size: 1.4rem;
+    margin-left: 100px;
+}
+
+.LoginPage .title-container{
+font-size: 1.5rem;
+padding: 2px;
+margin-left: 40px;
+
+}
+.LoginPage .title-container h1{
+    border-bottom: 5px solid green;
+}
+.LoginPage #now-span{
+    border:none;
+}
+
+
+.LoginPage .error{
+   width: 350px;
+   height: 500px;
+   top: 0;
+   left: -2%;
+
+}
+
+.LoginPage .error h1{
+    font-size: 1.3rem;
+}
+
+.LoginPage .error button{
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 5%;
+    font-size: 2rem;
+}
+
+
+}
