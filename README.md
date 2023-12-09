@@ -8,15 +8,15 @@ https://vote-for-your-favorite-cat.netlify.app/
 
 I have created a responsive voting site.
 First there is a login page , I have used mockapi to create my own data.
-You can log in as admin which has more features than normal user such as admin panel
+You can log in as admin which has more features than normal user such as admin panel.
 
-### log in as admin:
+### Log in as admin:
 
 username : hasan@gmail.com
 <br>
 password : admin
 
-### log in as a user:
+### Log in as a user:
 
 username : Diana.Rempel89@yahoo.com
 <br>
