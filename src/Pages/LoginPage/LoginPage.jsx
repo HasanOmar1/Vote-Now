@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useChangePage } from "../../Contexts/ChanePageContext/ChangePageContext";
 import { useData } from "../../Contexts/DataContext/DataContext";
 import "./LoginPage.css";
 import { useCurrentUser } from "../../Contexts/CurrentUserContext/CurrentUserContext";
-import { useLoggedUser } from "../../Contexts/LoggedUserContext/LoggedUserContext";
 import LogInSpinner from "../../components/Spinner/LogInSpinner";
 
 export default function LoginPage() {
