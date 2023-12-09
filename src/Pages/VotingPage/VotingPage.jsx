@@ -59,7 +59,7 @@ export default function VotingPage() {
 
   return (
     <main className="VotingPage page">
-      {loggedUser ? (
+      {/* {loggedUser ? (
         <div>
           <Navbar />
           <h1 className="page-title">
@@ -83,8 +83,8 @@ export default function VotingPage() {
         </div>
       ) : (
         <Spinner />
-      )}
-      {/* <Navbar />
+      )} */}
+      <Navbar />
       <h1 className="page-title">
         Which cat do you think is the <span id="cool-span">Coolest</span>
         one?
@@ -102,7 +102,7 @@ export default function VotingPage() {
             />
           );
         })}
-      </div> */}
+      </div>
     </main>
   );
 }

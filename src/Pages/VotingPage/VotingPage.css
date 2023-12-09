@@ -18,3 +18,29 @@
     display: flex;
     justify-content: space-around;
 }
+
+
+@media (max-width: 576px) {
+
+.VotingPage .cards{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.VotingPage h1{
+    font-size: 1rem;
+    padding-bottom: 50px;
+}
+
+.VotingPage{
+    height: 180vh;
+    width: 100vw;
+}
+
+
+}

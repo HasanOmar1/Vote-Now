@@ -110,3 +110,22 @@ top: 95px;
     display: block;
 }
 
+
+
+@media (max-width: 576px) {
+
+.Navbar {
+    width: 100vw;
+}
+
+
+.Navbar .panels{
+left: 100px;
+}
+.Navbar .logo-container{
+
+    margin-left: 15px;
+    border: none;
+
+}
+}
