@@ -35,9 +35,6 @@ function App() {
             <HasVotedProvider>
               <TotalVotesProvider>
                 <SetPages />
-                {/* <LoginPage /> */}
-                {/* <VotingPage /> */}
-                {/* <AdminPage /> */}
               </TotalVotesProvider>
             </HasVotedProvider>
           </LoggedUserProvider>
