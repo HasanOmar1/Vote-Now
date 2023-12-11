@@ -16,12 +16,9 @@ export default function Card({ img, title, index, isVoting, setIsVoting }) {
   }, [votes]);
 
   function handleAskToChangeVote(catName) {
-    console.log("catsname:", catName);
     const updatedUser = { ...currentUser, votedFor: catName };
-    console.log("user after update:", updatedUser);
     submitVote(updatedUser);
     setIsCardVoting(false);
-    // console.log(userInfo);
   }
 
   function handleChangeVote() {
