@@ -44,8 +44,6 @@ I have also added a total votes which shows how many accounts voted.
 
 ---
 
-!This site is not perfect , it has some bugs.
-
 ## Site's Preview
 
 ![Alt text](/src/assets/login.png)
