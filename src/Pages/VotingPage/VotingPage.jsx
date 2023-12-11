@@ -2,73 +2,19 @@ import "./VotingPage.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Card from "../../components/Cards/Card";
 import cardsArr from "../../components/Cards/Cards";
-import { useCurrentUser } from "../../Contexts/CurrentUserContext/CurrentUserContext";
-import { useLoggedUser } from "../../Contexts/LoggedUserContext/LoggedUserContext";
-import { useEffect, useState } from "react";
-import axios from "../../axiosConfig";
+import { useState } from "react";
 import Spinner from "../../components/Spinner/Spinner";
-import { getUserInfo } from "../../Contexts/UserInfoContext/UserInfoContext";
-import { setHasVoted } from "../../Contexts/HasVotedContext/HasVotedContext";
 import { useData } from "../../Contexts/DataContext/DataContext";
-import { getTotalVotes } from "../../Contexts/TotalVotesContext/TotalVotesContext";
 
 export default function VotingPage() {
-  const [isCurrentlyVoting, setIsCurrentlyVoting] = useState(false);
+  const [isVoting, setIsVoting] = useState(false);
+  const { data, currentUser } = useData();
 
-  const { isVoted } = setHasVoted();
-  const { changeUserInfo } = getUserInfo();
-  const { loggedUser, getLoggedUser } = useLoggedUser();
-  const { currentUser } = useCurrentUser();
-  const { data, changeData } = useData();
-  const { addToTotalVotes } = getTotalVotes();
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await axios.get("/users");
-        changeData(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    try {
-      async function fetchUser() {
-        const response = await axios.get(`/users/${currentUser}`);
-        changeUserInfo(response.data);
-        getLoggedUser(response.data.username);
-      }
-      fetchUser();
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (data) {
-      const filtered = data.filter((votes) => votes.hasVoted === true);
-      addToTotalVotes(filtered.length);
-    }
-  }, []);
-
-  async function updateVoteStatus() {
-    try {
-      const response = await axios.put(`/users/${currentUser}`, {
-        hasVoted: isVoted,
-      });
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  updateVoteStatus();
+  console.log(data);
 
   return (
     <main className="VotingPage page">
-      {loggedUser ? (
+      {currentUser ? (
         <div>
           <Navbar />
           <h1 className="page-title">
@@ -82,9 +28,9 @@ export default function VotingPage() {
                   key={index}
                   title={card.title}
                   img={card.img}
-                  isCurrentlyVoting={isCurrentlyVoting}
-                  setIsCurrentlyVoting={setIsCurrentlyVoting}
                   index={index}
+                  isVoting={isVoting}
+                  setIsVoting={setIsVoting}
                 />
               );
             })}

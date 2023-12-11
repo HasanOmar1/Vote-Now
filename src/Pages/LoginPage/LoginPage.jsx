@@ -1,8 +1,7 @@
 import { useRef, useState } from "react";
-import { useChangePage } from "../../Contexts/ChanePageContext/ChangePageContext";
+import { useChangePage } from "../../Contexts/ChangePageContext/ChangePageContext";
 import { useData } from "../../Contexts/DataContext/DataContext";
 import "./LoginPage.css";
-import { useCurrentUser } from "../../Contexts/CurrentUserContext/CurrentUserContext";
 import LogInSpinner from "../../components/Spinner/LogInSpinner";
 
 export default function LoginPage() {
@@ -13,14 +12,13 @@ export default function LoginPage() {
   const invalidMsgRef = useRef();
 
   const { changePage } = useChangePage();
-  const { data } = useData();
-  const { changeCurrentUser } = useCurrentUser();
+  const { data, setCurrentUser } = useData();
 
   function handleOnSubmit(e) {
     e.preventDefault();
-    const isValid = data.map((data) => {
-      if (emailInputVal === data.email && passwordInputVal === data.password) {
-        changeCurrentUser(data.id);
+    const isValid = data.map((user) => {
+      if (emailInputVal === user.email && passwordInputVal === user.password) {
+        setCurrentUser(user);
         changePage("voting-page");
       } else {
         invalidMsgRef.current.classList = `error`;

@@ -15,6 +15,9 @@
     font-size: 3rem;
    
 }
+.AdminPage .green {
+    color: rgb(10, 93, 10);
+}
 
 .AdminPage .data-info{
     width: 800px;

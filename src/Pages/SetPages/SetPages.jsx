@@ -1,5 +1,5 @@
 import React from "react";
-import { useChangePage } from "../../Contexts/ChanePageContext/ChangePageContext";
+import { useChangePage } from "../../Contexts/ChangePageContext/ChangePageContext";
 import LoginPage from "../LoginPage/LoginPage";
 import VotingPage from "../VotingPage/VotingPage";
 import AdminPage from "../AdminPage/AdminPage";
