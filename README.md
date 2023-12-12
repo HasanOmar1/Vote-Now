@@ -40,7 +40,7 @@ you click on your name.
 There you will find all the accounts in the api and you can see
 who voted and who did not.
 
-I have also added a total votes which shows how many accounts voted.
+I have also added a votes chart thats shows how many votes each cat got.
 
 ---
 
