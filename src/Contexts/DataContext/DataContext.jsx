@@ -13,6 +13,15 @@ export default function DataProvider({ children }) {
     setData(data);
   }
 
+  async function getData() {
+    try {
+      const response = await axios.get("/users");
+      setData(response.data);
+    } catch (error) {
+      console.log(`was unable to fetch users!`);
+    }
+  }
+
   async function submitVote(user) {
     try {
       const response = await axios.put(`/users/${user.id}`, user);
@@ -20,15 +29,6 @@ export default function DataProvider({ children }) {
       getData();
     } catch (error) {
       console.log(`User was unable to update!`);
-    }
-  }
-
-  async function getData() {
-    try {
-      const response = await axios.get("/users");
-      setData(response.data);
-    } catch (error) {
-      console.log(`was unable to fetch users!`);
     }
   }
 
