@@ -4,9 +4,12 @@ import { useData } from "../../Contexts/DataContext/DataContext";
 import { useEffect } from "react";
 import axios from "../../axiosConfig";
 import Spinner from "../../components/Spinner/Spinner";
+import { Chart as ChartJS } from "chart.js/auto";
+import { Bar } from "react-chartjs-2";
+import cardsArr from "../../components/Cards/Cards";
 
 export default function AdminPage() {
-  const { data, changeData, currentUser, totalVotes } = useData();
+  const { data, changeData, currentUser, totalVotes, votes } = useData();
 
   useEffect(() => {
     async function fetchData() {
@@ -52,6 +55,28 @@ export default function AdminPage() {
           </div>
 
           <h1 className="total-votes">Total Votes : {totalVotes}</h1>
+
+          <div className="chart">
+            <Bar
+              data={{
+                labels: cardsArr.map((cat) => cat.title),
+                datasets: [
+                  {
+                    label: "Total Votes",
+                    data: votes.map((vote) => vote),
+                    backgroundColor: [
+                      "#97008e",
+                      "#90fc0f",
+                      "#77aee9",
+                      "#ebf369",
+                    ],
+
+                    borderRadius: 10,
+                  },
+                ],
+              }}
+            />
+          </div>
         </div>
       ) : (
         <Spinner />
