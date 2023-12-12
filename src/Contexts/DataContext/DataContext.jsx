@@ -8,6 +8,7 @@ export default function DataProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
   const [votes, setVotes] = useState([0, 0, 0, 0]);
   const [totalVotes, setTotalVotes] = useState(0);
+
   function changeData(data) {
     setData(data);
   }
