@@ -88,4 +88,10 @@ gap: 10px;
 .AdminPage .email-container{
     width: 150%;
 }
+
+.chart{
+    width: 350px;
+    height: 200px;
+    margin: 0;
+}
 }
