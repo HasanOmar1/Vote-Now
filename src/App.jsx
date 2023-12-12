@@ -4,7 +4,6 @@ import axios from "./axiosConfig";
 import SetPages from "./Pages/SetPages/SetPages";
 import ChangePageProvider from "./Contexts/ChangePageContext/ChangePageContext";
 import { useData } from "./Contexts/DataContext/DataContext";
-import TotalVotesProvider from "./Contexts/TotalVotesContext/TotalVotesContext";
 function App() {
   const { changeData } = useData();
 
@@ -23,9 +22,7 @@ function App() {
   return (
     <>
       <ChangePageProvider>
-        <TotalVotesProvider>
-          <SetPages />
-        </TotalVotesProvider>
+        <SetPages />
       </ChangePageProvider>
     </>
   );

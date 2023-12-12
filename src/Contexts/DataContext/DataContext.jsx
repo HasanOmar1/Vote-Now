@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../../axiosConfig";
+import cardsArr from "../../components/Cards/Cards";
 
 export const DataContext = createContext();
 
@@ -35,7 +36,7 @@ export default function DataProvider({ children }) {
   useEffect(() => {
     if (data) {
       setCurrentUser(data.find((user) => user?.id === currentUser?.id));
-      const cats = ["Chilling Cat", "Model Cat", "Mafia Cat", "Sniper Cat"];
+      const cats = cardsArr.map((cat) => cat.title);
       const amountOfVotes = cats.map((cat) => calcVoteForCat(cat));
       console.log(amountOfVotes);
       setVotes(amountOfVotes);
